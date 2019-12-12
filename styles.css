@@ -1,0 +1,43 @@
+.outer {
+  margin: 20px;
+}
+.icon-view {
+  /* background: gray; */
+  display: block;
+  position: relative;
+  user-select: none;
+  max-height: 60vw;
+  overflow: auto;
+}
+.icon {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin: 20px;
+  background: lightcoral;
+  z-index: 1;
+}
+.selected {
+  background: blueviolet;
+}
+.shadow {
+  background-color: rgba(133, 205, 250, 0.5);
+  position: absolute;
+  display: inline-block;
+}
+.top-drag {
+  background: rgba(255, 0, 0, 0.5);
+  height: 35px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+.bottom-drag {
+  background: rgba(255, 0, 0, 0.5);
+  height: 35px;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+}
