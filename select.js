@@ -25,8 +25,8 @@ const resizeShadowFreely = (e, shadow, container, initialPos, containerOffsets) 
     shadow.style.width = initialPos.x - e.pageX + 'px';
   } else if (e.pageX >= initialPos.x) {
     shadow.style.right = 'auto';
-    shadow.style.left = initialPos.x - containerOffsets.left;
-    shadow.style.width = e.pageX - initialPos.x + 'px';
+    shadow.style.left = parseInt(initialPos.x - containerOffsets.left);
+    shadow.style.width = Math.min(e.pageX - initialPos.x, Math.abs(parseInt(shadow.style.left) - parseInt(container.scrollWidth))) + 'px';
   }
   if (e.pageY < initialPos.y) {
     shadow.style.top = 'auto';
@@ -35,8 +35,11 @@ const resizeShadowFreely = (e, shadow, container, initialPos, containerOffsets) 
   }
   if (e.pageY >= initialPos.y) {
     shadow.style.bottom = 'auto';
-    shadow.style.top = initialPos.y - containerOffsets.top + initialPos.scrollTop;
-    shadow.style.height = e.pageY - initialPos.y + (container.scrollTop - initialPos.scrollTop) + 'px';
+    shadow.style.top = parseInt(initialPos.y - containerOffsets.top + initialPos.scrollTop) + 'px';
+    let maxHeight = Math.abs(parseInt(shadow.style.top) - parseInt(container.scrollHeight));
+    let newHeight = e.pageY - initialPos.y + (container.scrollTop - initialPos.scrollTop);
+    console.log('maxHeight', maxHeight, 'shadow.style.top', shadow.style.top, 'container.scrollHeight', container.scrollHeight, 'newHeight', newHeight);
+    shadow.style.height = Math.min(newHeight, maxHeight) + 'px';
   }
 };
 
@@ -66,7 +69,7 @@ window.addEventListener('load', () => {
     }
   });
 
-  iconView.addEventListener('mousemove', (e) => {
+  window.addEventListener('mousemove', (e) => {
     if (shadow) {
       resizeShadowFreely(e, shadow, iconView, initialPos, offsets);
       event = e;
