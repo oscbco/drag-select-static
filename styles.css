@@ -1,24 +1,42 @@
+body {
+  font-family: sans;
+}
 .outer {
   margin: 20px;
 }
 .icon-view {
-  /* background: gray; */
+  background: #555;
   display: block;
   position: relative;
   user-select: none;
-  max-height: 60vw;
   overflow: auto;
+  max-width: 70vw;
+  max-height: 60vh;
+  margin: auto;
 }
 .icon {
   display: inline-block;
   width: 70px;
   height: 70px;
   margin: 20px;
-  background: lightcoral;
+  background: #666;
+  color: #DDD;
   z-index: 1;
+  text-align: center;
+  padding: 5px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+.icon svg {
+  width: 3rem;
+  margin-bottom: 6px;
+}
+.icon path {
+  fill: currentColor;
 }
 .selected {
-  background: blueviolet;
+  background: #30BCED;
+  color: #333;
 }
 .shadow {
   background-color: rgba(133, 205, 250, 0.5);
@@ -26,18 +44,20 @@
   display: inline-block;
 }
 .top-drag {
-  background: rgba(255, 0, 0, 0.5);
+  /* background: rgba(255, 0, 0, 0.5); */
   height: 35px;
   position: sticky;
   top: 0;
   width: 100%;
   z-index: -1;
+  margin-bottom: -35px;
 }
 .bottom-drag {
-  background: rgba(255, 0, 0, 0.5);
+  /* background: rgba(255, 0, 0, 0.5); */
   height: 35px;
   position: sticky;
   bottom: 0;
   width: 100%;
   z-index: -1;
+  margin-top: -35px;
 }
